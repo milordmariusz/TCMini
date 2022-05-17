@@ -31,7 +31,9 @@ namespace TCMini.ViewModel
                         {
                             Console.WriteLine("PIesio####################");
                             Console.WriteLine(Panel1.PathText);
+                            Console.WriteLine(Panel1.IsEnabled);
                             Console.WriteLine(Panel2.PathText);
+                            Console.WriteLine(Panel2.IsEnabled);
                         },
                         (object o) =>
                         {

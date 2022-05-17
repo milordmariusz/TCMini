@@ -55,7 +55,8 @@
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay,
                                RelativeSource={RelativeSource
                                Mode=FindAncestor,
-                               AncestorType={x:Type UserControl}}}">
+                               AncestorType={x:Type UserControl}}}"
+                  IsEnabled="{Binding IsEnabled}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding ChangeContent}"/>

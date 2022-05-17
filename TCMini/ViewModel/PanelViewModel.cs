@@ -71,6 +71,17 @@ namespace TCMini.ViewModel
             }
         }
 
+        private bool _IsEnabled;
+        public bool IsEnabled
+        {
+            get { return _IsEnabled; }
+            set
+            {
+                _IsEnabled = value; 
+                onPropertyChanged(nameof(IsEnabled)); 
+            }
+        }
+
         private ICommand _changeContent;
         public ICommand ChangeContent
         {
@@ -83,6 +94,7 @@ namespace TCMini.ViewModel
                         {
                             if (SelectedItem == "..")
                             {
+                                PathText = PathText.Remove(PathText.Length - 1);
                                 PathText = PathText.Substring(0, PathText.LastIndexOf(@"\"));
                                 if (PathText.Length == 2)
                                 {
@@ -96,9 +108,10 @@ namespace TCMini.ViewModel
                                 {
                                     PathText += @"\";
                                 }
-                                PathText += SelectedItem.Substring(3, SelectedItem.Length - 3);
+                                PathText += SelectedItem.Substring(3, SelectedItem.Length - 3) + @"\";
                             }
-                            onPropertyChanged(nameof(PathText));
+                            Content = Model.GetListOfContent(PathText);
+                            onPropertyChanged(nameof(PathText), nameof(Content));
                         },
                         (object o) =>
                         {

@@ -22,7 +22,11 @@ namespace TCMini.Model
 
         public List<string> GetListOfContent(string path)
         {
-            var contents = new List<string>() { ".." };
+            var contents = new List<string>();
+            if (path.Length > 3)
+            {
+                contents.Add("..");
+            }
             try
             {
                 var directories = Directory.GetDirectories(path);
@@ -36,7 +40,7 @@ namespace TCMini.Model
             try
             {
                 var files = Directory.GetFiles(path);
-                contents.AddRange(files.Select(file => file.Replace(path + @"\", "")));
+                contents.AddRange(files.Select(file => file.Replace(path, "")));
             }
             catch (Exception e)
             {

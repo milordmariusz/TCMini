@@ -35,7 +35,8 @@
                       SelectedDrive="{Binding Panel1.SelectedDrive, Mode=TwoWay}"
                       PathText="{Binding Panel1.PathText}"
                       Content="{Binding Panel1.Content}"
-                      SelectedItem="{Binding Panel1.SelectedItem, Mode=TwoWay}">
+                      SelectedItem="{Binding Panel1.SelectedItem, Mode=TwoWay}"
+                      IsEnabled="{Binding Panel1.IsEnabled}">
 
                 <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
@@ -55,7 +56,8 @@
                       SelectedDrive="{Binding Panel2.SelectedDrive, Mode=TwoWay}"
                       PathText="{Binding Panel2.PathText}"
                       Content="{Binding Panel2.Content}"
-                      SelectedItem="{Binding Panel2.SelectedItem, Mode=TwoWay}">
+                      SelectedItem="{Binding Panel2.SelectedItem, Mode=TwoWay}"
+                      IsEnabled="{Binding Panel2.IsEnabled}">
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
