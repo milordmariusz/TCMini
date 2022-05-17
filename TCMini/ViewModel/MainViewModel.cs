@@ -30,7 +30,8 @@ namespace TCMini.ViewModel
                         (object o) =>
                         {
                             Console.WriteLine("PIesio####################");
-                            Console.WriteLine(Panel1.Drives.Count);
+                            Console.WriteLine(Panel1.PathText);
+                            Console.WriteLine(Panel2.PathText);
                         },
                         (object o) =>
                         {

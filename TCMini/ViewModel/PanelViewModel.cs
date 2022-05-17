@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TCMini.Model;
 
 namespace TCMini.ViewModel
@@ -28,7 +29,8 @@ namespace TCMini.ViewModel
             get { return _PathText; }
             set 
             { 
-                _PathText = value; 
+                _PathText = value;
+                Content = Model.GetListOfContent(PathText);
                 onPropertyChanged(nameof(PathText));
             }
         }
@@ -56,6 +58,55 @@ namespace TCMini.ViewModel
                 onPropertyChanged(nameof(Content));
             }
 
+        }
+
+        private string _SelectedItem;
+        public string SelectedItem
+        {
+            get { return _SelectedItem; }
+            set
+            {
+                _SelectedItem = value;
+                onPropertyChanged(nameof(SelectedItem));
+            }
+        }
+
+        private ICommand _changeContent;
+        public ICommand ChangeContent
+        {
+            get
+            {
+                if (_changeContent == null)
+                {
+                    _changeContent = new RelayCommand(
+                        (object o) =>
+                        {
+                            if (SelectedItem == "..")
+                            {
+                                PathText = PathText.Substring(0, PathText.LastIndexOf(@"\"));
+                                if (PathText.Length == 2)
+                                {
+                                    PathText += @"\";
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine(SelectedItem);
+                                if (!PathText.EndsWith(@"\"))
+                                {
+                                    PathText += @"\";
+                                }
+                                PathText += SelectedItem.Substring(3, SelectedItem.Length - 3);
+                            }
+                            onPropertyChanged(nameof(PathText));
+                        },
+                        (object o) =>
+                        {
+                            return SelectedItem.Contains("<D>") || SelectedItem.Contains("..");
+                        });
+                }
+                return _changeContent;
+            }
         }
     }
 }
