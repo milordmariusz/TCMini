@@ -88,16 +88,29 @@ namespace TCMini.View
             set { SetValue(SelectedItemProperty, value); }
         }
 
-        public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register(
-                nameof(IsEnabled),
-                typeof(bool),
-                typeof(Panel));
 
-        public bool IsEnabled
+        //////// Change Panel Section \\\\\\\\\
+        public static readonly RoutedEvent ChangeFocusEvent =
+            EventManager.RegisterRoutedEvent(nameof(Focus),
+                    RoutingStrategy.Bubble, typeof(RoutedEventHandler),
+                    typeof(Panel));
+
+        public event RoutedEventHandler ChangeFocus
         {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
+            add { AddHandler(ChangeFocusEvent, value); }
+            remove { RemoveHandler(ChangeFocusEvent, value); }
+        }
+
+        void RaiseChangeFocus()
+        {
+            RoutedEventArgs newEventArgs =
+                    new RoutedEventArgs(Panel.ChangeFocusEvent);
+            RaiseEvent(newEventArgs);
+        }
+
+        private void ZawartoscSciezki_GotFocus(object sender, RoutedEventArgs e)
+        {
+            RaiseChangeFocus();
         }
     }
 }

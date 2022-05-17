@@ -13,6 +13,8 @@ namespace TCMini.Model
         public List<String> Drives = new List<string>();
         public List<String> Content = new List<string>();
 
+        public int Panel = 0;
+
         public List<String> GetListOfDrives()
         {
             Console.WriteLine("Siema tu konstruktor modelu");

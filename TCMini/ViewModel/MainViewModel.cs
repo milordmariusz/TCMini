@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TCMini.Model;
 
 namespace TCMini.ViewModel
 {
@@ -12,11 +13,13 @@ namespace TCMini.ViewModel
         public PanelViewModel Panel1 { get; set; }
         public PanelViewModel Panel2 { get; set; }
 
+        public CopyModel Copy = new CopyModel();
+
         public MainViewModel()
         {
             Console.WriteLine("PIesio####################");
-            Panel1 = new PanelViewModel();
-            Panel2 = new PanelViewModel();
+            Panel1 = new PanelViewModel(Copy,1);
+            Panel2 = new PanelViewModel(Copy,2);
         }
 
         private ICommand _copy;
@@ -31,9 +34,14 @@ namespace TCMini.ViewModel
                         {
                             Console.WriteLine("PIesio####################");
                             Console.WriteLine(Panel1.PathText);
-                            Console.WriteLine(Panel1.IsEnabled);
+                            Console.WriteLine(Panel1.SelectedItem);
+                            Console.WriteLine(Copy.Panel);
+
+                            Console.WriteLine("-----------------");
+
                             Console.WriteLine(Panel2.PathText);
-                            Console.WriteLine(Panel2.IsEnabled);
+                            Console.WriteLine(Panel2.SelectedItem);
+                            Console.WriteLine(Copy.Panel);
                         },
                         (object o) =>
                         {

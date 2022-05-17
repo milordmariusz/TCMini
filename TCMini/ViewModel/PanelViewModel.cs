@@ -13,7 +13,11 @@ namespace TCMini.ViewModel
         public PanelModel Model;
         public List<string> Drives { get; set; }
 
-        public PanelViewModel()
+        public int Number;
+
+        public CopyModel Copy;
+
+        public PanelViewModel(CopyModel copy, int number)
         {
             Console.WriteLine("Siema tu konstruktor panelu");
             Model = new PanelModel();
@@ -21,6 +25,8 @@ namespace TCMini.ViewModel
             SelectedDrive = Drives[0];
             PathText = SelectedDrive.ToString();
             Content = Model.GetListOfContent(PathText);
+            Number = number;
+            Copy = copy;
         }
 
         private string _PathText;
@@ -71,17 +77,6 @@ namespace TCMini.ViewModel
             }
         }
 
-        private bool _IsEnabled;
-        public bool IsEnabled
-        {
-            get { return _IsEnabled; }
-            set
-            {
-                _IsEnabled = value; 
-                onPropertyChanged(nameof(IsEnabled)); 
-            }
-        }
-
         private ICommand _changeContent;
         public ICommand ChangeContent
         {
@@ -119,6 +114,22 @@ namespace TCMini.ViewModel
                         });
                 }
                 return _changeContent;
+            }
+        }
+
+        private ICommand focus;
+        public ICommand Focus
+        {
+
+            get
+            {
+                return focus ?? (focus = new RelayCommand(
+                    o =>
+                    {
+                        Copy.Panel = Number;
+                    },
+                    o => true
+                    ));
             }
         }
     }
