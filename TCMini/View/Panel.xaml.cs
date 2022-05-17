@@ -62,5 +62,18 @@ namespace TCMini.View
             get { return (string)GetValue(SelectedDriveProperty); }
             set { SetValue(SelectedDriveProperty, value); }
         }
+
+        //////// Content Section \\\\\\\\\
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register(
+                nameof(Content),
+                typeof(List<string>),
+                typeof(Panel));
+
+        public List<string> Content
+        {
+            get { return (List<string>)GetValue(DrivesProperty); }
+            set { SetValue(DrivesProperty, value); }
+        }
     }
 }

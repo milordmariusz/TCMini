@@ -16,9 +16,10 @@ namespace TCMini.ViewModel
         {
             Console.WriteLine("Siema tu konstruktor panelu");
             Model = new PanelModel();
-            Drives = Model.getListOfDrives();
+            Drives = Model.GetListOfDrives();
             SelectedDrive = Drives[0];
             PathText = SelectedDrive.ToString();
+            Content = Model.GetListOfContent(PathText);
         }
 
         private string _PathText;
@@ -38,9 +39,23 @@ namespace TCMini.ViewModel
             get { return _SelectedDrive; }
             set 
             {
-                _SelectedDrive = value; 
+                _SelectedDrive = value;
+                PathText = _SelectedDrive.ToString();
+                Content = Model.GetListOfContent(PathText);
                 onPropertyChanged(nameof(SelectedDrive));
             }
+        }
+
+        private List<string> _Content;
+        public List<string> Content
+        {
+            get { return _Content; }
+            set 
+            { 
+                _Content = value;
+                onPropertyChanged(nameof(Content));
+            }
+
         }
     }
 }

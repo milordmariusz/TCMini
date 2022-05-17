@@ -11,12 +11,39 @@ namespace TCMini.Model
     {
         public string PathText { get; set; }
         public List<String> Drives = new List<string>();
+        public List<String> Content = new List<string>();
 
-        public List<String> getListOfDrives()
+        public List<String> GetListOfDrives()
         {
             Console.WriteLine("Siema tu konstruktor modelu");
             Drives = Directory.GetLogicalDrives().ToList();
             return Drives;
+        }
+
+        public List<string> GetListOfContent(string path)
+        {
+            var contents = new List<string>() { ".." };
+            try
+            {
+                var directories = Directory.GetDirectories(path);
+                contents.AddRange(directories.Select(directory => directory.Replace(directory.Substring(0, directory.LastIndexOf(@"\") + 1), "<D>")));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            try
+            {
+                var files = Directory.GetFiles(path);
+                contents.AddRange(files.Select(file => file.Replace(path + @"\", "")));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return contents;
         }
     }
 }

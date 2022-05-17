@@ -33,9 +33,9 @@
                       Grid.Column="0"
                       Drives="{Binding Panel1.Drives}"
                       SelectedDrive="{Binding Panel1.SelectedDrive, Mode=TwoWay}"
-                      PathText="{Binding Panel1.PathText}">
-            <!--FilesList="{Binding PanelLeft.FilesList}"
-                      SelectedFile="{Binding PanelLeft.SelectedFile, Mode=TwoWay}">
+                      PathText="{Binding Panel1.PathText}"
+                      Content="{Binding Panel1.Content}">
+            <!--SelectedFile="{Binding PanelLeft.SelectedFile, Mode=TwoWay}">
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="CbClick">
@@ -53,9 +53,9 @@
                       Grid.Column="1"
                       Drives="{Binding Panel2.Drives}"
                       SelectedDrive="{Binding Panel2.SelectedDrive, Mode=TwoWay}"
-                      PathText="{Binding Panel1.PathText}">
-                      <!--FilesList="{Binding PanelRight.FilesList}"
-                      SelectedFile="{Binding PanelRight.SelectedFile, Mode=TwoWay}">
+                      PathText="{Binding Panel2.PathText}"
+                      Content="{Binding Panel2.Content}">
+                      <!--SelectedFile="{Binding PanelRight.SelectedFile, Mode=TwoWay}">
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="CbClick">
