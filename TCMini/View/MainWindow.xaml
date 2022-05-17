@@ -1,0 +1,87 @@
+﻿<Window x:Class="TCMini.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TCMini"
+        xmlns:view="clr-namespace:TCMini.View" 
+        xmlns:vm="clr-namespace:TCMini.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <!--<Window.Resources>
+        <vm:MainViewModel x:Key="mainVM"/>
+    </Window.Resources>-->
+
+    <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+        <view:Panel x:Name="Panel1"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      Drives="{Binding Panel1.Drives}"
+                      SelectedDrive="{Binding Panel1.SelectedDrive, Mode=TwoWay}"
+                      PathText="{Binding Panel1.PathText}">
+            <!--FilesList="{Binding PanelLeft.FilesList}"
+                      SelectedFile="{Binding PanelLeft.SelectedFile, Mode=TwoWay}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="CbClick">
+                        <i:InvokeCommandAction Command="{Binding PanelLeft.DriveListClick}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LdDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding PanelLeft.FolderChange}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
+
+            </view:Panel>
+
+        <view:Panel x:Name="Panel2"
+                      Grid.Row="0"
+                      Grid.Column="1"
+                      Drives="{Binding Panel2.Drives}"
+                      SelectedDrive="{Binding Panel2.SelectedDrive, Mode=TwoWay}"
+                      PathText="{Binding Panel1.PathText}">
+                      <!--FilesList="{Binding PanelRight.FilesList}"
+                      SelectedFile="{Binding PanelRight.SelectedFile, Mode=TwoWay}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="CbClick">
+                        <i:InvokeCommandAction Command="{Binding PanelRight.DriveListClick}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LdDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding PanelRight.FolderChange}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
+
+            </view:Panel>
+
+        <Button Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Width="90"
+                Height="35"
+                Content="Copy"
+                FontSize="17"
+                Command="{Binding Path=copy}"/>
+
+        <Label Grid.Row="1"
+               Margin="5 5 50 5"
+               Foreground="#d00"
+               HorizontalContentAlignment="Left"
+               VerticalContentAlignment="Center"/>
+        <!--Content="{Binding PanelLeft.ErrorDescription}"/>-->
+
+        </Grid>
+</Window>
