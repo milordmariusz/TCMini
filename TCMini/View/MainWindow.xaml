@@ -41,7 +41,7 @@
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding Panel1.ChangeContent}"/>
                     </i:EventTrigger>
-                <i:EventTrigger EventName="ChangeFocus">
+                <i:EventTrigger EventName="GotFocus">
                     <i:InvokeCommandAction Command="{Binding Panel1.Focus}"/>
                 </i:EventTrigger>
                 <!--<i:EventTrigger EventName="LdDoubleClick">
@@ -64,7 +64,7 @@
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding Panel2.ChangeContent}"/>
                 </i:EventTrigger>
-                <i:EventTrigger EventName="ChangeFocus">
+                <i:EventTrigger EventName="GotFocus">
                     <i:InvokeCommandAction Command="{Binding Panel2.Focus}"/>
                 </i:EventTrigger>
                 <!--<i:EventTrigger EventName="LdDoubleClick">

@@ -90,27 +90,27 @@ namespace TCMini.View
 
 
         //////// Change Panel Section \\\\\\\\\
-        public static readonly RoutedEvent ChangeFocusEvent =
-            EventManager.RegisterRoutedEvent(nameof(Focus),
-                    RoutingStrategy.Bubble, typeof(RoutedEventHandler),
-                    typeof(Panel));
+        //public static readonly RoutedEvent ChangeFocusEvent =
+        //    EventManager.RegisterRoutedEvent(nameof(Focus),
+        //            RoutingStrategy.Bubble, typeof(RoutedEventHandler),
+        //            typeof(Panel));
 
-        public event RoutedEventHandler ChangeFocus
-        {
-            add { AddHandler(ChangeFocusEvent, value); }
-            remove { RemoveHandler(ChangeFocusEvent, value); }
-        }
+        //public event RoutedEventHandler ChangeFocus
+        //{
+        //    add { AddHandler(ChangeFocusEvent, value); }
+        //    remove { RemoveHandler(ChangeFocusEvent, value); }
+        //}
 
-        void RaiseChangeFocus()
-        {
-            RoutedEventArgs newEventArgs =
-                    new RoutedEventArgs(Panel.ChangeFocusEvent);
-            RaiseEvent(newEventArgs);
-        }
+        //void RaiseChangeFocus()
+        //{
+        //    RoutedEventArgs newEventArgs =
+        //            new RoutedEventArgs(Panel.ChangeFocusEvent);
+        //    RaiseEvent(newEventArgs);
+        //}
 
-        private void ZawartoscSciezki_GotFocus(object sender, RoutedEventArgs e)
-        {
-            RaiseChangeFocus();
-        }
+        //private void ZawartoscSciezki_GotFocus(object sender, RoutedEventArgs e)
+        //{
+        //    RaiseChangeFocus();
+        //}
     }
 }

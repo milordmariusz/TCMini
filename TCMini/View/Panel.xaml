@@ -55,11 +55,13 @@
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay,
                                RelativeSource={RelativeSource
                                Mode=FindAncestor,
-                               AncestorType={x:Type UserControl}}}"
-                  GotFocus="ZawartoscSciezki_GotFocus">
+                               AncestorType={x:Type UserControl}}}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding ChangeContent}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding Focus}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
