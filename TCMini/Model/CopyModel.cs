@@ -8,6 +8,6 @@ namespace TCMini.Model
 {
     public class CopyModel
     {
-        public int Panel;
+        public int ActivePanel;
     }
 }

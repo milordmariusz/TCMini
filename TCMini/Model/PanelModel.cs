@@ -17,7 +17,6 @@ namespace TCMini.Model
 
         public List<String> GetListOfDrives()
         {
-            Console.WriteLine("Siema tu konstruktor modelu");
             Drives = Directory.GetLogicalDrives().ToList();
             return Drives;
         }

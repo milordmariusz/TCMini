@@ -61,7 +61,7 @@
                     <i:InvokeCommandAction Command="{Binding ChangeContent}"/>
                 </i:EventTrigger>
                 <i:EventTrigger EventName="GotFocus">
-                    <i:InvokeCommandAction Command="{Binding Focus}"/>
+                    <i:InvokeCommandAction Command="{Binding FocusChange}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>

@@ -19,7 +19,6 @@ namespace TCMini.ViewModel
 
         public PanelViewModel(CopyModel copy, int number)
         {
-            Console.WriteLine("Siema tu konstruktor panelu");
             Model = new PanelModel();
             Drives = Model.GetListOfDrives();
             SelectedDrive = Drives[0];
@@ -29,6 +28,7 @@ namespace TCMini.ViewModel
             Copy = copy;
         }
 
+        #region Zmienne
         private string _PathText;
         public string PathText
         {
@@ -76,15 +76,15 @@ namespace TCMini.ViewModel
                 onPropertyChanged(nameof(SelectedItem));
             }
         }
+        #endregion
 
+        #region Commands
         private ICommand _changeContent;
         public ICommand ChangeContent
         {
             get
             {
-                if (_changeContent == null)
-                {
-                    _changeContent = new RelayCommand(
+                return _changeContent ?? (_changeContent = new RelayCommand(
                         (object o) =>
                         {
                             if (SelectedItem == "..")
@@ -98,7 +98,6 @@ namespace TCMini.ViewModel
                             }
                             else
                             {
-                                Console.WriteLine(SelectedItem);
                                 if (!PathText.EndsWith(@"\"))
                                 {
                                     PathText += @"\";
@@ -111,26 +110,25 @@ namespace TCMini.ViewModel
                         (object o) =>
                         {
                             return SelectedItem.Contains("<D>") || SelectedItem.Contains("..");
-                        });
-                }
-                return _changeContent;
+                        }));
             }
         }
 
-        private ICommand focus;
-        public ICommand Focus
+        private ICommand _focusChange;
+        public ICommand FocusChange
         {
 
             get
             {
-                return focus ?? (focus = new RelayCommand(
+                return _focusChange ?? (_focusChange = new RelayCommand(
                     o =>
                     {
-                        Copy.Panel = Number;
+                        Copy.ActivePanel = Number;
                     },
                     o => true
                     ));
             }
         }
+        #endregion
     }
 }

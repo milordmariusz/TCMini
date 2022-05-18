@@ -19,31 +19,27 @@ namespace TCMini.ViewModel
 
         public MainViewModel()
         {
-            Console.WriteLine("PIesio####################");
             Panel1 = new PanelViewModel(Copy,1);
             Panel2 = new PanelViewModel(Copy,2);
         }
 
-        private ICommand _copy;
-        public ICommand copy
+        #region Commands
+        private ICommand _copyFile;
+        public ICommand CopyFile
         {
             get
             {
-                if (_copy == null)
-                {
-                    _copy = new RelayCommand(
+                return _copyFile ?? (_copyFile = new RelayCommand(
                         (object o) =>
                         {
                             try
                             {
-                                if (Copy.Panel == 1)
+                                if (Copy.ActivePanel == 1)
                                 {
-                                    Console.WriteLine("Kopiuję: " + Panel1.PathText + Panel1.SelectedItem + " do: " + Panel2.PathText);
                                     File.Copy(Panel1.PathText + Panel1.SelectedItem, Panel2.PathText + Panel1.SelectedItem);
                                 }
-                                else if (Copy.Panel == 2)
+                                else if (Copy.ActivePanel == 2)
                                 {
-                                    Console.WriteLine("Kopiuję: " + Panel2.PathText + Panel2.SelectedItem + " do: " + Panel1.PathText);
                                     File.Copy(Panel2.PathText + Panel2.SelectedItem, Panel1.PathText + Panel2.SelectedItem);
                                 }
                                 Panel1.PathText = Panel1.PathText;
@@ -51,7 +47,7 @@ namespace TCMini.ViewModel
                             }
                             catch (DirectoryNotFoundException)
                             {
-                                MessageBoxResult result = MessageBox.Show("Nie odnaleziono ścieżki docelowej","Error", MessageBoxButton.OK);
+                                MessageBoxResult result = MessageBox.Show("Nie odnaleziono ścieżki docelowej", "Error", MessageBoxButton.OK);
                             }
                             catch (ArgumentException)
                             {
@@ -65,10 +61,9 @@ namespace TCMini.ViewModel
                         (object o) =>
                         {
                             return true;
-                        });
-                }
-                return _copy;
+                        }));
             }
         }
+        #endregion
     }
 }

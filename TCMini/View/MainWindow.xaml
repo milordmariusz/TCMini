@@ -12,10 +12,6 @@
         <vm:MainViewModel/>
     </Window.DataContext>
 
-    <!--<Window.Resources>
-        <vm:MainViewModel x:Key="mainVM"/>
-    </Window.Resources>-->
-
     <Grid>
 
             <Grid.RowDefinitions>
@@ -42,12 +38,9 @@
                     <i:InvokeCommandAction Command="{Binding Panel1.ChangeContent}"/>
                     </i:EventTrigger>
                 <i:EventTrigger EventName="GotFocus">
-                    <i:InvokeCommandAction Command="{Binding Panel1.Focus}"/>
+                    <i:InvokeCommandAction Command="{Binding Panel1.FocusChange}"/>
                 </i:EventTrigger>
-                <!--<i:EventTrigger EventName="LdDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding PanelLeft.FolderChange}"/>
-                    </i:EventTrigger>-->
-                </i:Interaction.Triggers>
+            </i:Interaction.Triggers>
 
             </view:Panel>
 
@@ -65,11 +58,8 @@
                     <i:InvokeCommandAction Command="{Binding Panel2.ChangeContent}"/>
                 </i:EventTrigger>
                 <i:EventTrigger EventName="GotFocus">
-                    <i:InvokeCommandAction Command="{Binding Panel2.Focus}"/>
+                    <i:InvokeCommandAction Command="{Binding Panel2.FocusChange}"/>
                 </i:EventTrigger>
-                <!--<i:EventTrigger EventName="LdDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding PanelLeft.FolderChange}"/>
-                    </i:EventTrigger>-->
             </i:Interaction.Triggers>
 
         </view:Panel>
@@ -80,14 +70,7 @@
                 Height="35"
                 Content="Copy"
                 FontSize="17"
-                Command="{Binding Path=copy}"/>
+                Command="{Binding Path=CopyFile}"/>
 
-        <Label Grid.Row="1"
-               Margin="5 5 50 5"
-               Foreground="#d00"
-               HorizontalContentAlignment="Left"
-               VerticalContentAlignment="Center"/>
-        <!--Content="{Binding PanelLeft.ErrorDescription}"/>-->
-
-        </Grid>
+    </Grid>
 </Window>

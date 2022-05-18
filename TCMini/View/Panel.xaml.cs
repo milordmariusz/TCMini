@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace TCMini.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy Panel.xaml
+    /// Logika interakcji dla klasy ActivePanel.xaml
     /// </summary>
     public partial class Panel : UserControl
     {
@@ -87,30 +87,5 @@ namespace TCMini.View
             get { return (string)GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
-
-
-        //////// Change Panel Section \\\\\\\\\
-        //public static readonly RoutedEvent ChangeFocusEvent =
-        //    EventManager.RegisterRoutedEvent(nameof(Focus),
-        //            RoutingStrategy.Bubble, typeof(RoutedEventHandler),
-        //            typeof(Panel));
-
-        //public event RoutedEventHandler ChangeFocus
-        //{
-        //    add { AddHandler(ChangeFocusEvent, value); }
-        //    remove { RemoveHandler(ChangeFocusEvent, value); }
-        //}
-
-        //void RaiseChangeFocus()
-        //{
-        //    RoutedEventArgs newEventArgs =
-        //            new RoutedEventArgs(Panel.ChangeFocusEvent);
-        //    RaiseEvent(newEventArgs);
-        //}
-
-        //private void ZawartoscSciezki_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //    RaiseChangeFocus();
-        //}
     }
 }
