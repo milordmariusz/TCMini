@@ -27,7 +27,8 @@
                      Text="{Binding PathText, 
                               RelativeSource={RelativeSource
                               Mode=FindAncestor,
-                              AncestorType={x:Type UserControl}}}">
+                              AncestorType={x:Type UserControl}}}"
+                     IsEnabled="False">
             </TextBox>
         </Grid>
 
