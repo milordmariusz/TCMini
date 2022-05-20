@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TCMini.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:TCMini.View" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -26,7 +27,8 @@
                      Text="{Binding PathText, 
                               RelativeSource={RelativeSource
                               Mode=FindAncestor,
-                              AncestorType={x:Type UserControl}}}"/>
+                              AncestorType={x:Type UserControl}}}">
+            </TextBox>
         </Grid>
 
         <Grid Grid.Row="1" Margin="5 10">
@@ -44,7 +46,8 @@
                       SelectedItem="{Binding SelectedDrive, Mode=TwoWay,
                                RelativeSource={RelativeSource
                                Mode=FindAncestor,
-                               AncestorType={x:Type UserControl}}}"/>
+                               AncestorType={x:Type UserControl}}}"
+                      DropDownOpened="cb_DropDownOpened"/>
 
         </Grid>
 
@@ -55,15 +58,7 @@
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay,
                                RelativeSource={RelativeSource
                                Mode=FindAncestor,
-                               AncestorType={x:Type UserControl}}}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding ChangeContent}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="GotFocus">
-                    <i:InvokeCommandAction Command="{Binding FocusChange}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </ListBox>
+                               AncestorType={x:Type UserControl}}}"
+                  MouseDoubleClick="lb_MouseDoubleClick"/>
     </Grid>
 </UserControl>

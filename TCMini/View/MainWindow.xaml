@@ -7,7 +7,7 @@
         xmlns:view="clr-namespace:TCMini.View" 
         xmlns:vm="clr-namespace:TCMini.ViewModel" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TCMini" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
@@ -29,16 +29,19 @@
                       Grid.Column="0"
                       Drives="{Binding Panel1.Drives}"
                       SelectedDrive="{Binding Panel1.SelectedDrive, Mode=TwoWay}"
-                      PathText="{Binding Panel1.PathText}"
+                      PathText="{Binding Panel1.PathText, Mode=TwoWay}"
                       Content="{Binding Panel1.Content}"
                       SelectedItem="{Binding Panel1.SelectedItem, Mode=TwoWay}">
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
+                <i:EventTrigger EventName="LbDoubleClick">
                     <i:InvokeCommandAction Command="{Binding Panel1.ChangeContent}"/>
                     </i:EventTrigger>
                 <i:EventTrigger EventName="GotFocus">
                     <i:InvokeCommandAction Command="{Binding Panel1.FocusChange}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="CbClick">
+                    <i:InvokeCommandAction Command="{Binding Panel1.Refresh}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 
@@ -49,16 +52,19 @@
                       Grid.Column="1"
                       Drives="{Binding Panel2.Drives}"
                       SelectedDrive="{Binding Panel2.SelectedDrive, Mode=TwoWay}"
-                      PathText="{Binding Panel2.PathText}"
+                      PathText="{Binding Panel2.PathText, Mode=TwoWay}"
                       Content="{Binding Panel2.Content}"
                       SelectedItem="{Binding Panel2.SelectedItem, Mode=TwoWay}">
 
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
+                <i:EventTrigger EventName="LbDoubleClick">
                     <i:InvokeCommandAction Command="{Binding Panel2.ChangeContent}"/>
                 </i:EventTrigger>
                 <i:EventTrigger EventName="GotFocus">
                     <i:InvokeCommandAction Command="{Binding Panel2.FocusChange}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="CbClick">
+                    <i:InvokeCommandAction Command="{Binding Panel2.Refresh}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 

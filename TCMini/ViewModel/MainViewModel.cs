@@ -57,6 +57,11 @@ namespace TCMini.ViewModel
                             {
                                 MessageBoxResult result = MessageBox.Show("Plik o takiej nazwie już istnieje", "Error", MessageBoxButton.OK);
                             }
+                            catch (Exception)
+                            {
+                                MessageBoxResult result = MessageBox.Show("Wystąpił błąd", "Error", MessageBoxButton.OK);
+                            }
+
                         },
                         (object o) =>
                         {

@@ -11,7 +11,6 @@ namespace TCMini.Model
     {
         public string PathText { get; set; }
         public List<String> Drives = new List<string>();
-        public List<String> Content = new List<string>();
 
         public int Panel = 0;
 

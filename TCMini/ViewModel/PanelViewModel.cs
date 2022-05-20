@@ -11,7 +11,6 @@ namespace TCMini.ViewModel
     public class PanelViewModel : BaseViewModel
     {
         public PanelModel Model;
-        public List<string> Drives { get; set; }
 
         public int Number;
 
@@ -29,6 +28,17 @@ namespace TCMini.ViewModel
         }
 
         #region Zmienne
+        private List<string> _Drives;
+        public List<string> Drives
+        {
+            get { return _Drives; }
+            set
+            {
+                _Drives = value;
+                Console.WriteLine("Ustawiam dyski");
+                onPropertyChanged(nameof(Drives));
+            }
+        }
         private string _PathText;
         public string PathText
         {
@@ -109,6 +119,8 @@ namespace TCMini.ViewModel
                         },
                         (object o) =>
                         {
+                            if (SelectedItem == null)
+                                return false;
                             return SelectedItem.Contains("<D>") || SelectedItem.Contains("..");
                         }));
             }
@@ -124,6 +136,23 @@ namespace TCMini.ViewModel
                     o =>
                     {
                         Copy.ActivePanel = Number;
+                    },
+                    o => true
+                    ));
+            }
+        }
+
+        private ICommand _refresh;
+        public ICommand Refresh
+        {
+
+            get
+            {
+                return _refresh ?? (_refresh = new RelayCommand(
+                    o =>
+                    {
+                        Drives = Model.GetListOfDrives();
+                        onPropertyChanged(nameof(Drives));
                     },
                     o => true
                     ));
